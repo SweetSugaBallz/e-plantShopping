@@ -9,45 +9,32 @@ const CartItem = ({ onContinueShopping }) => {
 
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
-    return cart.reduce((total, item) => total + item.cost * item.quantity, 0).toFixed(2);
+    const totalAmount = item.cost * item.quantity
   };
 
   const handleContinueShopping = (e) => {
-    e.preventDefault(); // Prevent any default behavior
-    if (onContinueShopping) {
-      onContinueShopping(); // Call the parent-provided callback
-    }
+
   };
 
+
+
   const handleIncrement = (item) => {
-    dispatch(updateQuantity({ id: item.id, quantity: item.quantity + 1 }));
   };
 
   const handleDecrement = (item) => {
-    if (item.quantity > 1) {
-      dispatch(updateQuantity({ id: item.id, quantity: item.quantity - 1 }));
-    } else {
-      dispatch(removeItem(item.id));
-    }
+
   };
 
   const handleRemove = (item) => {
-    dispatch(removeItem(item.id)); // Use the item's unique ID to remove it
   };
 
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
-    return (item.cost * item.quantity).toFixed(2);
-  };
-
-  const handleCheckoutShopping = (e) => {
-    alert('Functionality to be added for future reference');
   };
 
   return (
     <div className="cart-container">
       <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
-      <h3 style={{ color: 'black' }}>Total Items in Cart: {calculateTotalQuantity()}</h3>      
       <div>
         {cart.map(item => (
           <div className="cart-item" key={item.name}>
@@ -70,7 +57,7 @@ const CartItem = ({ onContinueShopping }) => {
       <div className="continue_shopping_btn">
         <button className="get-started-button" onClick={(e) => handleContinueShopping(e)}>Continue Shopping</button>
         <br />
-        <button className="get-started-button" onClick={(e) => handleCheckoutShopping(e)}>Checkout</button>
+        <button className="get-started-button1">Checkout</button>
       </div>
     </div>
   );
