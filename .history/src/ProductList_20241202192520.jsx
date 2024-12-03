@@ -5,17 +5,17 @@ import CartItem from './CartItem';
 import { addItem } from './CartSlice';
 
 function ProductList() {
-    const dispatch = useDispatch();
+const dispatch = useDispatch();
     const [showCart, setShowCart] = useState(false);
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
     const [addedToCart, setAddedToCart] = useState({});
     const handleAddToCart = (product) => {
         dispatch(addItem(product));
         setAddedToCart((prevState) => ({
-            ...prevState,
-            [product.name]: true, // Set the product name as key and value as true to indicate it's added to cart
-        }));
-    };
+           ...prevState,
+           [product.name]: true, // Set the product name as key and value as true to indicate it's added to cart
+         }));
+      };
 
     const plantsArray = [
         {
@@ -230,7 +230,7 @@ function ProductList() {
         padding: '15px',
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'center',
+        alignIems: 'center',
         fontSize: '20px',
     }
     const styleObjUl = {

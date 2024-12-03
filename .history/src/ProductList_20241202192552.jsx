@@ -230,7 +230,7 @@ function ProductList() {
         padding: '15px',
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'center',
+        alignIems: 'center',
         fontSize: '20px',
     }
     const styleObjUl = {
