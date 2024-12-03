@@ -16,9 +16,8 @@ const CartItem = ({ onContinueShopping }) => {
     return totalAmount.toFixed(2); // Ensure the total is formatted to two decimal places
   };
 
-  const handleContinueShopping = () => {
-   
-    onContinueShopping();
+  const handleContinueShopping = (e) => {
+    setShowProductList(true);
    };
 
   const handleIncrement = (item) => {

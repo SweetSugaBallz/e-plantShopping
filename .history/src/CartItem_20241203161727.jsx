@@ -16,10 +16,10 @@ const CartItem = ({ onContinueShopping }) => {
     return totalAmount.toFixed(2); // Ensure the total is formatted to two decimal places
   };
 
-  const handleContinueShopping = () => {
-   
-    onContinueShopping();
-   };
+  const handleContinueShopping = (e) => {
+      onContinueShopping(); // Call the parent-provided callback
+    }
+  };
 
   const handleIncrement = (item) => {
     dispatch(updateQuantity({ name: item.name, quantity: item.quantity +1}));

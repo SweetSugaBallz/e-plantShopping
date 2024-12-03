@@ -16,10 +16,12 @@ const CartItem = ({ onContinueShopping }) => {
     return totalAmount.toFixed(2); // Ensure the total is formatted to two decimal places
   };
 
-  const handleContinueShopping = () => {
-   
-    onContinueShopping();
-   };
+  const handleContinueShopping = (e) => {
+    e.preventDefault(); // Prevent any default behavior
+    if (onContinueShopping) {
+      onContinueShopping(); // Call the parent-provided callback
+    }
+  };
 
   const handleIncrement = (item) => {
     dispatch(updateQuantity({ name: item.name, quantity: item.quantity +1}));
@@ -34,12 +36,12 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleRemove = (item) => {
-    dispatch(removeItem ({name: item.name}));// Use the item's unique ID to remove it
+    dispatch(removeItem(item.id)); // Use the item's unique ID to remove it
   };
 
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
-    return parseFloat(item.cost.replace('$', '')) * item.quantity;
+    return (item.quantity * parseFloat(item.cost.replace('$', ''))).toFixed(2);
   };
 
   const handleCheckoutShopping = (e) => {
@@ -48,7 +50,8 @@ const CartItem = ({ onContinueShopping }) => {
 
   return (
     <div className="cart-container">
-      <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>      
+      <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
+      <h3 style={{ color: 'black' }}>Total Items in Cart: {calculateTotalQuantity()}</h3>      
       <div>
         {cart.map(item => (
           <div className="cart-item" key={item.name}>
