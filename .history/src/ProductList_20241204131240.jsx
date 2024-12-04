@@ -258,7 +258,9 @@ function ProductList() {
     };
 
     const handleContinueShopping = (e) => {
+        e.preventDefault();
         setShowCart(false);
+        setShowPlants(true);
     };
 
 
@@ -292,7 +294,7 @@ function ProductList() {
                                 fontWeight: 'bold',
                             }}
                         >
-                            {totalItems}</span>)} </h1></a></div>
+                            {totalItems}</span></h1></a></div>
                 </div>
             </div>
             {!showCart ? (
