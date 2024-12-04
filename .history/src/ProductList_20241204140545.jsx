@@ -284,16 +284,12 @@ function ProductList() {
                         <span
                             style={{
                                 position: 'absolute',
-                                top: '5px', // Adjusted position for counter
-                                right: '5px', // Adjusted position for counter
-                                backgroundColor: '#e74c3c', // Match CSS for consistency
+                                top: '25%',
+                                right: '20%',
                                 color: 'white',
-                                borderRadius: '50%', // Circular shape
-                                padding: '3px 6px', // Adjust padding
-                                fontSize: '14px', // Match the navbar size
+                                padding: '2px 6px',
+                                fontSize: '25px',
                                 fontWeight: 'bold',
-                                textAlign: 'center',
-                                lineHeight: '1',
                             }}
                         >
                             {totalItems}</span>)} </h1></a></div>

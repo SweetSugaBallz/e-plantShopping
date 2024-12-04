@@ -1,7 +1,7 @@
 .about-us-container {
   max-width: 1000px; /* Set a maximum width */
   width: 90%; /* Use a relative width for smaller screens */
-  margin: 0 auto; /* Center the container */
+  margin: 0 auto;
   padding: 20px;
   text-align: justify;
 }
@@ -22,7 +22,7 @@
   line-height: 1.6; /* Improve readability */
   margin-left: auto; /* Ensure alignment */
   margin-right: auto; /* Ensure alignment */
-  max-width: 50%; /* Limit the width for smaller screens */
+  max-width: 80%; /* Limit the width for smaller screens */
 }
 
 .about-us-content {
@@ -47,7 +47,6 @@
   .about-us-description,
   .about-us-content {
     font-size: 1rem; /* Smaller font for better fit */
-    max-width: 90%; /* Ensure it fits well within smaller screens */
   }
 
   .plant_logo_right,
@@ -64,7 +63,6 @@
   .about-us-description,
   .about-us-content {
     font-size: 0.875rem; /* Further reduce font size */
-    max-width: 100%; /* Allow full width if necessary */
   }
 
   .about-us-container {

@@ -238,11 +238,6 @@ body {
         text-align: center;
     }
 
-    .cart svg {
-        height: 40px;
-        width: 40px;
-    }
-
     .ul {
         flex-direction: column;
         gap: 10px;

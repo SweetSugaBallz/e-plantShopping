@@ -14,11 +14,12 @@ body {
 .navbar {
     background-color: #4CAF50;
     color: #fff !important;
-    padding: 10px; /* Reduced padding for a thinner navbar */
+    padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 18px; /* Slightly smaller font size */
+    font-size: 20px;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
 }
 
 .navbar .ul {
@@ -164,32 +165,16 @@ body {
     padding: 10px;
 }
 
-/* Cart Icon */
 .cart {
-    position: relative; /* Relative positioning for the counter */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cart svg {
-    height: 50px; /* Reduced height for smaller navbar */
-    width: 50px;
+    color: white;
+    display: flex;
 }
 
 .cart_quantity_count {
+    margin-top: 16px;
+    margin-left: 27px;
     position: absolute;
-    top: 5px; /* Adjusted position to fit neatly */
-    right: 5px;
-    background-color: #e74c3c; /* Highlight counter with red background */
-    color: white;
-    border-radius: 50%; /* Makes the counter circular */
-    padding: 3px 6px; /* Adjust size for readability */
-    font-size: 14px; /* Adjust font size for smaller space */
-    font-weight: bold;
-    text-align: center;
-    line-height: 1;
-    z-index: 10;
+    font-size: 29px;
 }
 
 .plantname_heading {
@@ -224,23 +209,11 @@ body {
     .navbar {
         flex-direction: column; /* Stacks navbar items */
         align-items: center;
-        padding: 8px;
     }
-
-    .cart_quantity_count {
-        font-size: 12px; /* Adjust font size for smaller screens */
-        padding: 2px 5px;
-    }
-    
 
     .tag {
         margin-bottom: 20px;
         text-align: center;
-    }
-
-    .cart svg {
-        height: 40px;
-        width: 40px;
     }
 
     .ul {

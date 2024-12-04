@@ -231,16 +231,12 @@ body {
         font-size: 12px; /* Adjust font size for smaller screens */
         padding: 2px 5px;
     }
+
     
 
     .tag {
         margin-bottom: 20px;
         text-align: center;
-    }
-
-    .cart svg {
-        height: 40px;
-        width: 40px;
     }
 
     .ul {

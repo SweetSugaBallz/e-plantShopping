@@ -8,10 +8,16 @@ body, h1, ul {
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
+    padding-top: 60px; /* Added padding to prevent content from being hidden behind the fixed navbar */
 }
 
 /* Navbar */
 .navbar {
+    position: fixed; /* Keeps the navbar fixed to the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures navbar stays on top of other content */
     background-color: #4CAF50;
     color: #fff !important;
     padding: 10px; /* Reduced padding for a thinner navbar */

@@ -22,7 +22,7 @@
   line-height: 1.6; /* Improve readability */
   margin-left: auto; /* Ensure alignment */
   margin-right: auto; /* Ensure alignment */
-  max-width: 50%; /* Limit the width for smaller screens */
+  max-width: 80%; /* Limit the width for smaller screens */
 }
 
 .about-us-content {

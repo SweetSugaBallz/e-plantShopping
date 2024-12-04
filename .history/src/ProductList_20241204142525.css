@@ -12,6 +12,7 @@ body {
 
 /* Navbar */
 .navbar {
+    position: fixed;
     background-color: #4CAF50;
     color: #fff !important;
     padding: 10px; /* Reduced padding for a thinner navbar */
