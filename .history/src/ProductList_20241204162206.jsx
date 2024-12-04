@@ -19,24 +19,6 @@ function ProductList() {
         }));
     };
 
-    const handleRemoveFromCart = (productId) => {
-        // Update the cart state to remove the item
-        setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
-    
-        // Update addedToCart to mark the product as not in the cart
-        setAddedToCart((prevState) => ({
-            ...prevState,
-            [productId]: false, // Set this product's cart status to false
-        }));
-    };
-
-    const handleEmptyCart = () => {
-        setCart([]); // Clear the cart array
-        setAddedToCart({}); // Reset all product states
-    };
-    
-    
-
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -268,18 +250,12 @@ function ProductList() {
         e.preventDefault();
         setShowCart(true); // Set showCart to true when cart icon is clicked
     };
-    
     const handlePlantsClick = (e) => {
         e.preventDefault();
-        setShowPlants(true);
-        setShowCart(false);
-    
-        // Reset addedToCart if cart is empty
-        if (cart.length === 0) {
-            setAddedToCart({});
-        }
+        setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
+        setShowCart(false); // Hide the cart when navigating to About Us
+        setAddedToCart(true);
     };
-    
 
     const handleContinueShopping = (e) => {
         setShowCart(false);
@@ -336,18 +312,22 @@ function ProductList() {
                                         <div className='product-description'>{plant.description}</div>
                                         <div className="product-price">{plant.cost}</div>
                                         <button
-                                            className="product-button"
-                                            onClick={() => {
-                                                // Toggle add/remove logic
-                                                if (addedToCart[plant.name]) {
-                                                    handleRemoveFromCart(plant);  // Remove the item if it's in the cart
-                                                } else {
-                                                    handleAddToCart(plant);  // Add the item if it's not in the cart
-                                                }
+                                            className={
+                                                addedToCard[plant.name]
+                                                    ? 'product-button btn-disabled'
+                                                    : 'product-button'
+                                            }
+                                            style={{
+                                                backgroundColor: addedToCard[plant.name]
+                                                    ? 'grey'
+                                                    : '#4CAF50',
                                             }}
-                                            disabled={addedToCart[plant.name]}  // Disable the button if the item is in the cart
+                                            disabled={addedToCard[plant.name]}
+                                            onClick={() => handleAddToCart(plant)}
                                         >
-                                            {addedToCart[plant.name] ? 'Added to cart' : 'Add to cart'}
+                                            {addedToCard[plant.name]
+                                                ? 'Already in Cart'
+                                                : 'Add to Cart'}
                                         </button>
                                     </div>
                                 ))}

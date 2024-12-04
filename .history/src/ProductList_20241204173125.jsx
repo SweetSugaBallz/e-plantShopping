@@ -268,7 +268,7 @@ function ProductList() {
         e.preventDefault();
         setShowCart(true); // Set showCart to true when cart icon is clicked
     };
-    
+
     const handlePlantsClick = (e) => {
         e.preventDefault();
         setShowPlants(true);
@@ -335,20 +335,9 @@ function ProductList() {
                                         <div className="product-title">{plant.name}</div>
                                         <div className='product-description'>{plant.description}</div>
                                         <div className="product-price">{plant.cost}</div>
-                                        <button
-                                            className="product-button"
-                                            onClick={() => {
-                                                // Toggle add/remove logic
-                                                if (addedToCart[plant.name]) {
-                                                    handleRemoveFromCart(plant);  // Remove the item if it's in the cart
-                                                } else {
-                                                    handleAddToCart(plant);  // Add the item if it's not in the cart
-                                                }
-                                            }}
-                                            disabled={addedToCart[plant.name]}  // Disable the button if the item is in the cart
-                                        >
-                                            {addedToCart[plant.name] ? 'Added to cart' : 'Add to cart'}
-                                        </button>
+    <button onClick={() => handleAddToCart(product)} disabled={isAddedToCart}>
+        {isAddedToCart ? "Added" : "Add to Cart"}
+    </button>
                                     </div>
                                 ))}
                             </div>

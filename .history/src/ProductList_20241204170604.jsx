@@ -19,23 +19,13 @@ function ProductList() {
         }));
     };
 
-    const handleRemoveFromCart = (productId) => {
-        // Update the cart state to remove the item
-        setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
-    
-        // Update addedToCart to mark the product as not in the cart
+    const handleRemoveFromCart = (product) => {
+        dispatch(addItem(product));
         setAddedToCart((prevState) => ({
             ...prevState,
-            [productId]: false, // Set this product's cart status to false
+            [product.name]: false, // Set the product name as key and value as false to indicate it's removed from cart
         }));
     };
-
-    const handleEmptyCart = () => {
-        setCart([]); // Clear the cart array
-        setAddedToCart({}); // Reset all product states
-    };
-    
-    
 
     const plantsArray = [
         {
@@ -268,18 +258,12 @@ function ProductList() {
         e.preventDefault();
         setShowCart(true); // Set showCart to true when cart icon is clicked
     };
-    
     const handlePlantsClick = (e) => {
         e.preventDefault();
-        setShowPlants(true);
-        setShowCart(false);
-    
-        // Reset addedToCart if cart is empty
-        if (cart.length === 0) {
-            setAddedToCart({});
-        }
+        setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
+        setShowCart(false); // Hide the cart when navigating to About Us
+        setAddedToCart(true);
     };
-    
 
     const handleContinueShopping = (e) => {
         setShowCart(false);

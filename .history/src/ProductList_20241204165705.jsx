@@ -19,23 +19,13 @@ function ProductList() {
         }));
     };
 
-    const handleRemoveFromCart = (productId) => {
-        // Update the cart state to remove the item
-        setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
-    
-        // Update addedToCart to mark the product as not in the cart
+    const handleRemoveFromCart = (product) => {
+        dispatch(addItem(product));
         setAddedToCart((prevState) => ({
             ...prevState,
-            [productId]: false, // Set this product's cart status to false
+            [product.name]: false, // Set the product name as key and value as false to indicate it's removed from cart
         }));
     };
-
-    const handleEmptyCart = () => {
-        setCart([]); // Clear the cart array
-        setAddedToCart({}); // Reset all product states
-    };
-    
-    
 
     const plantsArray = [
         {
@@ -268,18 +258,12 @@ function ProductList() {
         e.preventDefault();
         setShowCart(true); // Set showCart to true when cart icon is clicked
     };
-    
     const handlePlantsClick = (e) => {
         e.preventDefault();
-        setShowPlants(true);
-        setShowCart(false);
-    
-        // Reset addedToCart if cart is empty
-        if (cart.length === 0) {
-            setAddedToCart({});
-        }
+        setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
+        setShowCart(false); // Hide the cart when navigating to About Us
+        setAddedToCart(true);
     };
-    
 
     const handleContinueShopping = (e) => {
         setShowCart(false);
@@ -304,23 +288,23 @@ function ProductList() {
                 <div style={styleObjUl}>
                     <div> <a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>Plants</a></div>
                     <div> <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}><h1 className='cart'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" id="IconChangeColor" height="68" width="68"><rect width="156" height="156" fill="none"></rect><circle cx="80" cy="216" r="12"></circle><circle cx="184" cy="216" r="12"></circle><path d="M42.3,72H221.7l-26.4,92.4A15.9,15.9,0,0,1,179.9,176H84.1a15.9,15.9,0,0,1-15.4-11.6L32.5,37.8A8,8,0,0,0,24.8,32H8" fill="none" stroke="#faf9f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" id="mainIconPathAttribute"></path></svg>
-                        {totalItems > 0 && (
-                            <span
-                                style={{
-                                    position: 'absolute',
-                                    top: '5px', // Adjusted position for counter
-                                    right: '5px', // Adjusted position for counter
-                                    backgroundColor: '#e74c3c', // Match CSS for consistency
-                                    color: 'white',
-                                    borderRadius: '50%', // Circular shape
-                                    padding: '3px 6px', // Adjust padding
-                                    fontSize: '14px', // Match the navbar size
-                                    fontWeight: 'bold',
-                                    textAlign: 'center',
-                                    lineHeight: '1',
-                                }}
-                            >
-                                {totalItems}</span>)} </h1></a></div>
+                    {totalItems > 0 && (
+                        <span
+                            style={{
+                                position: 'absolute',
+                                top: '5px', // Adjusted position for counter
+                                right: '5px', // Adjusted position for counter
+                                backgroundColor: '#e74c3c', // Match CSS for consistency
+                                color: 'white',
+                                borderRadius: '50%', // Circular shape
+                                padding: '3px 6px', // Adjust padding
+                                fontSize: '14px', // Match the navbar size
+                                fontWeight: 'bold',
+                                textAlign: 'center',
+                                lineHeight: '1',
+                            }}
+                        >
+                            {totalItems}</span>)} </h1></a></div>
                 </div>
             </div>
             {!showCart ? (
@@ -335,20 +319,11 @@ function ProductList() {
                                         <div className="product-title">{plant.name}</div>
                                         <div className='product-description'>{plant.description}</div>
                                         <div className="product-price">{plant.cost}</div>
-                                        <button
-                                            className="product-button"
-                                            onClick={() => {
-                                                // Toggle add/remove logic
-                                                if (addedToCart[plant.name]) {
-                                                    handleRemoveFromCart(plant);  // Remove the item if it's in the cart
-                                                } else {
-                                                    handleAddToCart(plant);  // Add the item if it's not in the cart
-                                                }
-                                            }}
-                                            disabled={addedToCart[plant.name]}  // Disable the button if the item is in the cart
-                                        >
-                                            {addedToCart[plant.name] ? 'Added to cart' : 'Add to cart'}
-                                        </button>
+                                        <button className='product-button' onClick={() => 
+                                        {if (addedToCart[plant.name]) {handleRemoveFromCart(plant);}
+                                        else {handleAddToCart(plant);}}}
+                                            disabled={addedToCart[plant.name] === true}>
+                                            {addedToCart[plant.name] ? 'Added to cart' : 'Add to cart'}</button>
                                     </div>
                                 ))}
                             </div>
